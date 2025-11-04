@@ -1,0 +1,96 @@
+---
+title: "Penguin Data Analysis with Shinylive"
+author: "Cancer Epigenetics Study"
+format: 
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+filters:
+  - shinylive
+---
+
+## Interactive Penguin Explorer
+
+This interactive application allows you to explore the Palmer Penguins dataset. You can select different variables for the X and Y axes, and color the points by species, sex, or island.
+
+### Embedded Shiny App
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 600
+
+# Loading required libraries
+library(shiny)
+library(ggplot2)
+library(palmerpenguins)
+
+# Create Input() UI 
+ui <- fluidPage(
+  titlePanel("Penguin Data Analysis"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("xvar", "X-axis variable:",
+                  choices = c("Flipper Length" = "flipper_length_mm",
+                              "Bill Length" = "bill_length_mm",
+                              "Bill Depth" = "bill_depth_mm",
+                              "Body Mass" = "body_mass_g")),
+      selectInput("yvar", "Y-axis variable:",
+                  choices = c("Body Mass" = "body_mass_g",
+                              "Flipper Length" = "flipper_length_mm",
+                              "Bill Length" = "bill_length_mm",
+                              "Bill Depth" = "bill_depth_mm")),
+      selectInput("colorvar", "Color by:",
+                  choices = c("Species" = "species",
+                              "Sex" = "sex",
+                              "Island" = "island"))
+    ),
+    
+    mainPanel(
+      plotOutput("scatterPlot")
+    )
+  )
+)
+
+# Server determine how to render outputs given inputs
+server <- function(input, output) {
+  
+  output$scatterPlot <- renderPlot({
+    ggplot(data = penguins, aes_string(x = input$xvar, y = input$yvar, color = input$colorvar)) +
+      geom_point(size = 3, alpha = 0.7) +
+      labs(title = paste(input$yvar, "vs", input$xvar),
+           x = input$xvar,
+           y = input$yvar) +
+      theme_minimal() +
+      theme(plot.title = element_text(hjust = 0.5, size = 16, face = "bold"))
+  })  
+}
+
+shinyApp(ui, server)
+```
+
+## About the Data
+
+The Palmer Penguins dataset contains size measurements for three penguin species observed on three islands in the Palmer Archipelago, Antarctica.
+
+**Variables:**
+- **Species**: Adelie, Chinstrap, or Gentoo
+- **Island**: Biscoe, Dream, or Torgersen
+- **Bill Length (mm)**: Length of the bill
+- **Bill Depth (mm)**: Depth of the bill
+- **Flipper Length (mm)**: Length of the flipper
+- **Body Mass (g)**: Body mass
+
+## How to Use This App
+
+1. Select the variable you want on the X-axis
+2. Select the variable you want on the Y-axis
+3. Choose a grouping variable for colors (species, sex, or island)
+4. The plot updates automatically!
+
+## Learn More
+
+- [Palmer Penguins R Package](https://allisonhorst.github.io/palmerpenguins/)
+- [Shinylive Documentation](https://posit-dev.github.io/r-shinylive/)
+- [Quarto Documentation](https://quarto.org/)

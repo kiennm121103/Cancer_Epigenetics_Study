@@ -1,0 +1,10 @@
+name: deploy_app
+title:
+username: xvdope-ki0n-nguy0n0m0nh
+account: xvdope-ki0n-nguy0n0m0nh
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 15955511
+bundleId: 11126954
+url: https://xvdope-ki0n-nguy0n0m0nh.shinyapps.io/deploy_app/
+version: 1

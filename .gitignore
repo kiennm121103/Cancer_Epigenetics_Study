@@ -1,0 +1,22 @@
+# R files
+.Rhistory
+.RData
+.Rproj.user
+*.Rproj
+
+# renv
+renv/library/
+renv/local/
+renv/staging/
+
+# Temporary files
+*~
+*.swp
+.DS_Store
+
+# Output
+*.png
+*.pdf
+demo_plot*.png
+
+/.quarto/

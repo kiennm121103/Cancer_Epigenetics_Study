@@ -1,0 +1,59 @@
+---
+title: "About"
+---
+
+## About This Project
+
+This Cancer Epigenetics Study website showcases interactive data analysis tools built with R, Shiny, and modern web technologies.
+
+## Purpose
+
+The goal is to demonstrate:
+
+1. **Reproducible Research**: Using R and Quarto for transparent analysis
+2. **Interactive Visualization**: Creating engaging data exploration tools
+3. **Modern Deployment**: Leveraging Shinylive for browser-based apps
+4. **Open Science**: Sharing tools freely via GitHub Pages
+
+## Technology
+
+### R and Shiny
+- **R**: Statistical programming language
+- **Shiny**: Framework for interactive web apps
+- **ggplot2**: Grammar of graphics for elegant visualizations
+
+### Shinylive
+Shinylive allows Shiny apps to run entirely in the browser using WebAssembly. This means:
+- No R server required
+- Free hosting on GitHub Pages
+- Instant loading (after initial assets)
+- Works offline after first load
+
+### Quarto
+Quarto is a scientific publishing system that:
+- Combines narrative text with code
+- Renders to websites, PDFs, presentations
+- Supports multiple languages (R, Python, Julia)
+- Integrates with Shinylive for embedded apps
+
+## Dataset
+
+The **Palmer Penguins** dataset was collected and made available by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER. It's an excellent alternative to the classic Iris dataset for data science education.
+
+**Citation:**
+Horst AM, Hill AP, Gorman KB (2020). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://allisonhorst.github.io/palmerpenguins/
+
+## Contact
+
+For questions or collaboration:
+- GitHub: [Your GitHub Profile]
+- Email: [Your Email]
+
+## License
+
+Code: MIT License
+Content: CC BY 4.0
+
+---
+
+*Built with ❤️ using R, Shiny, and Quarto*
