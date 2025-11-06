@@ -158,4 +158,3 @@ penguins %>%
   filter(species == "Adelie") %>%
   summarise(
     iqr = IQR(body_mass_g, na.rm = TRUE))
-
