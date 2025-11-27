@@ -1,0 +1,104 @@
+---
+title: "Plotnine Analysis"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: united
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## Introduction
+
+This R Markdown document demonstrates the use of plotnine for data visualization.
+
+## Load Libraries
+
+```{r libraries}
+library(tidyverse)
+# library(plotnine)  # Uncomment if using Python's plotnine via reticulate
+```
+
+## Load Data
+
+```{r load-data}
+# Load your data here
+# data <- read.csv("path/to/your/data.csv")
+
+# Example using built-in dataset
+data <- mtcars
+```
+
+## Data Exploration
+
+```{r explore-data}
+# View structure of data
+str(data)
+
+# Summary statistics
+summary(data)
+
+# First few rows
+head(data)
+```
+
+## Data Visualization
+
+### Plot 1: Basic Scatter Plot
+
+```{r plot-1}
+ggplot(data, aes(x = wt, y = mpg)) +
+  geom_point() +
+  labs(title = "Scatter Plot: Weight vs MPG",
+       x = "Weight (1000 lbs)",
+       y = "Miles per Gallon") +
+  theme_minimal()
+```
+
+### Plot 2: Colored by Category
+
+```{r plot-2}
+ggplot(data, aes(x = wt, y = mpg, color = factor(cyl))) +
+  geom_point(size = 3) +
+  labs(title = "Scatter Plot: Weight vs MPG by Cylinder",
+       x = "Weight (1000 lbs)",
+       y = "Miles per Gallon",
+       color = "Cylinders") +
+  theme_bw()
+```
+
+### Plot 3: With Regression Line
+
+```{r plot-3}
+ggplot(data, aes(x = wt, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(title = "Scatter Plot with Linear Regression",
+       x = "Weight (1000 lbs)",
+       y = "Miles per Gallon") +
+  theme_classic()
+```
+
+## Analysis
+
+```{r analysis}
+# Perform your analysis here
+model <- lm(mpg ~ wt, data = data)
+summary(model)
+```
+
+## Conclusion
+
+Summarize your findings here.
+
+## Session Info
+
+```{r session-info}
+sessionInfo()
+```

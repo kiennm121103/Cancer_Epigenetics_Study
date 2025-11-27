@@ -90,7 +90,18 @@ renv::snapshot()
 
 # 3. Check what's tracked:
 renv::dependencies()
-```
+# Retry installing the png package (should work now)
+install.packages("png")
+
+# Then continue with the rest of your packages
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+# Install Bioconductor packages
+BiocManager::install(c("DESeq2", "edgeR", "limma"))
+
+# Install remaining CRAN packages
+install.packages(c("cellranger", "ggrepel", "pheatmap", "Seurat"))```
 
 ## Workflow Example
 

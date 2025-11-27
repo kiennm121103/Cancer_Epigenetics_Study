@@ -1,11 +1,14 @@
+# Loading required libraries
 library(ggplot2)
 library(dplyr)
 library(palmerpenguins)
 library(car)
+
 # Determine the correctlation between body_mass_g and other variable
 lm_model <- lm(body_mass_g ~ flipper_length_mm + year + bill_length_mm + bill_depth_mm + species + sex,
                data = penguins)
 summary(lm_model)
+
 # Remove rows with missing values
 penguins_clean <- penguins %>% 
   filter(!is.na(body_mass_g), 
@@ -19,14 +22,8 @@ penguins_clean <- penguins %>%
 set.seed(123)
 
 # Create training and test datasets (75% train, 25% test)
-sample_size <- floor(0.75 * nrow(penguins_clean))
-train_indices <- sample(seq_len(nrow(penguins_clean)), size = sample_size)
+set.seed(123)
 
-train_data <- penguins_clean[train_indices, ]
-test_data <- penguins_clean[-train_indices, ]
-
-cat("Training set size:", nrow(train_data), "\n")
-cat("Test set size:", nrow(test_data), "\n\n")
 
 # Train the linear model on training data
 lm_model <- lm(body_mass_g ~ flipper_length_mm + bill_length_mm + year + bill_depth_mm  + species + sex,
@@ -126,4 +123,3 @@ print(contingency_table)
 chi_squared_test <- chisq.test(contingency_table)
 cat("\n")
 print(chi_squared_test)
-
